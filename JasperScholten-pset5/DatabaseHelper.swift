@@ -192,7 +192,7 @@ class DatabaseHelper {
         var count = 0
         
         do {
-            for row in try db!.prepare(todo.select(todoItem.id)) {
+            for row in try db!.prepare(todo) {
                 if count == index {
                     rowID = row[todoItem.id]
                 }
@@ -217,7 +217,7 @@ class DatabaseHelper {
         var count = 0
         
         do {
-            for row in try db!.prepare(lists.select(todoList.id)) {
+            for row in try db!.prepare(lists) {
                 if count == index {
                     rowID = row[todoList.id]
                 }
