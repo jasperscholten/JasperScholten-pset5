@@ -15,6 +15,10 @@
 		A455D21F1DEC6C16004835E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A455D21D1DEC6C16004835E2 /* LaunchScreen.storyboard */; };
 		A4B573B31DED9A0A00C58D55 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B573A61DED9A0100C58D55 /* SQLite.framework */; };
 		A4B573B61DED9E4300C58D55 /* todoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573B51DED9E4300C58D55 /* todoTableViewCell.swift */; };
+		A4B573B81DEDA5FC00C58D55 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573B71DEDA5FC00C58D55 /* DatabaseHelper.swift */; };
+		A4B573BA1DEDA60A00C58D55 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573B91DEDA60A00C58D55 /* TodoManager.swift */; };
+		A4B573BC1DEDBFC300C58D55 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573BB1DEDBFC300C58D55 /* TodoList.swift */; };
+		A4B573BE1DEDBFD600C58D55 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573BD1DEDBFD600C58D55 /* TodoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,10 @@
 		A455D2201DEC6C16004835E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4B5739B1DED9A0100C58D55 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		A4B573B51DED9E4300C58D55 /* todoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todoTableViewCell.swift; sourceTree = "<group>"; };
+		A4B573B71DEDA5FC00C58D55 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		A4B573B91DEDA60A00C58D55 /* TodoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
+		A4B573BB1DEDBFC300C58D55 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
+		A4B573BD1DEDBFD600C58D55 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +125,15 @@
 				A455D2121DEC6C16004835E2 /* AppDelegate.swift */,
 				A455D2141DEC6C16004835E2 /* MasterViewController.swift */,
 				A455D2161DEC6C16004835E2 /* DetailViewController.swift */,
-				A4B573B51DED9E4300C58D55 /* todoTableViewCell.swift */,
+				A4B573B71DEDA5FC00C58D55 /* DatabaseHelper.swift */,
+				A4B573BB1DEDBFC300C58D55 /* TodoList.swift */,
+				A4B573BD1DEDBFD600C58D55 /* TodoItem.swift */,
+				A4B573B91DEDA60A00C58D55 /* TodoManager.swift */,
 				A455D2181DEC6C16004835E2 /* Main.storyboard */,
 				A455D21B1DEC6C16004835E2 /* Assets.xcassets */,
 				A455D21D1DEC6C16004835E2 /* LaunchScreen.storyboard */,
 				A455D2201DEC6C16004835E2 /* Info.plist */,
+				A4B573B51DED9E4300C58D55 /* todoTableViewCell.swift */,
 			);
 			path = "JasperScholten-pset5";
 			sourceTree = "<group>";
@@ -272,8 +284,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A455D2171DEC6C16004835E2 /* DetailViewController.swift in Sources */,
+				A4B573BC1DEDBFC300C58D55 /* TodoList.swift in Sources */,
+				A4B573BA1DEDA60A00C58D55 /* TodoManager.swift in Sources */,
+				A4B573B81DEDA5FC00C58D55 /* DatabaseHelper.swift in Sources */,
 				A455D2151DEC6C16004835E2 /* MasterViewController.swift in Sources */,
 				A455D2131DEC6C16004835E2 /* AppDelegate.swift in Sources */,
+				A4B573BE1DEDBFD600C58D55 /* TodoItem.swift in Sources */,
 				A4B573B61DED9E4300C58D55 /* todoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

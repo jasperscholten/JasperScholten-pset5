@@ -53,22 +53,27 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="URR-qF-Eb7" id="Lsq-yr-HcE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lk9-Rb-d37">
+                                                    <rect key="frame" x="8" y="6" width="51" height="31"/>
+                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV5-fp-fZG">
-                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="cR0-i3-OLy"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="65" y="11" width="294" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="aV5-fp-fZG" firstAttribute="leading" secondItem="Lsq-yr-HcE" secondAttribute="leadingMargin" id="SVR-Fu-mel"/>
-                                                <constraint firstItem="aV5-fp-fZG" firstAttribute="top" secondItem="Lsq-yr-HcE" secondAttribute="topMargin" constant="3" id="TUG-Wt-Al2"/>
+                                                <constraint firstItem="aV5-fp-fZG" firstAttribute="top" secondItem="Lsq-yr-HcE" secondAttribute="topMargin" constant="3" id="2pu-cw-gyH"/>
+                                                <constraint firstAttribute="bottom" secondItem="Lk9-Rb-d37" secondAttribute="bottom" constant="6" id="5Yq-6Q-iNz"/>
+                                                <constraint firstItem="Lk9-Rb-d37" firstAttribute="top" secondItem="Lsq-yr-HcE" secondAttribute="top" constant="6" id="MZK-VE-Pj1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aV5-fp-fZG" secondAttribute="trailing" constant="8" id="QeU-wJ-wb1"/>
+                                                <constraint firstItem="aV5-fp-fZG" firstAttribute="leading" secondItem="Lk9-Rb-d37" secondAttribute="trailing" constant="8" id="XYZ-AJ-Gi9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aV5-fp-fZG" secondAttribute="bottom" constant="3" id="iLV-EB-yuN"/>
+                                                <constraint firstItem="Lk9-Rb-d37" firstAttribute="leading" secondItem="Lsq-yr-HcE" secondAttribute="leading" constant="8" id="vCs-Uz-gyo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -86,15 +91,15 @@
                         <constraints>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="8EZ-Ah-Wen" secondAttribute="bottom" id="PYB-jc-GT9"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
+                            <constraint firstItem="8EZ-Ah-Wen" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="Zfj-1R-y87"/>
                             <constraint firstItem="8EZ-Ah-Wen" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="iOf-gh-NSN"/>
                             <constraint firstAttribute="trailing" secondItem="8EZ-Ah-Wen" secondAttribute="trailing" id="jFm-7q-1Oo"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
                             <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
-                            <constraint firstItem="8EZ-Ah-Wen" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="tyl-Do-uaC"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Todo Items" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                         <outlet property="todoTableView" destination="8EZ-Ah-Wen" id="Ai6-hf-Zn2"/>
@@ -131,11 +136,11 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -155,11 +160,14 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Lists" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <outlet property="tableView" destination="r7i-6Z-zg0" id="25G-Wt-uf9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-630"/>
+            <point key="canvasLocation" x="1014" y="-605"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">

@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var objects = [String]()
 
 
     override func viewDidLoad() {
@@ -38,9 +38,27 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        
+        // http://stackoverflow.com/questions/26567413/get-input-value-from-textfield-in-ios-alert-in-swift
+        let alert = UIAlertController(title: "Add a new list", message: "Enter the name of your new list", preferredStyle: .alert)
+
+        alert.addTextField { (textField) in
+            textField.placeholder = "Listname"
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            print("Text field: \(textField?.text)")
+            
+            // check of lijstnaam al bestaat, anders alert 'list does already exist'
+            
+            TodoManager.sharedInstance.write(title: "unused", list: (textField?.text!)!, tableName: "lists")
+            
+            self.tableView.reloadData()
+        
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Segues
@@ -48,9 +66,11 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                
+                // geeft lijstnaam mee, zodat die lijst geladen kan worden
+                let listname = TodoManager.sharedInstance.selectListname(index: indexPath.row)
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.detailItem = listname
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -64,14 +84,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return TodoManager.sharedInstance.count(list: "unused", tableName: "lists")
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        
+        cell.textLabel!.text = TodoManager.sharedInstance.read(index: indexPath.row, list: "unused",tableName: "lists")
+        
         return cell
     }
 
@@ -82,7 +102,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            TodoManager.sharedInstance.delete(index: indexPath.row, tableName: "lists")
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
