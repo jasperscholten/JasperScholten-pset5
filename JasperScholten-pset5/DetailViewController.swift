@@ -126,6 +126,25 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    // MARK: - State Restoration
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        if let selectedList = detailItem {
+            coder.encode(selectedList, forKey: "selectedList")
+        }
+     
+        super.encodeRestorableState(with: coder)
+    }
+     
+    override func decodeRestorableState(with coder: NSCoder) {
+     
+        if let selectedList = coder.decodeObject(forKey: "selectedList") as? String {
+            detailItem = selectedList
+        }
+        
+        super.decodeRestorableState(with: coder)
+    }
 
 }
 
