@@ -214,12 +214,14 @@ class DatabaseHelper {
     
     func deleteList(index: Int) throws {
         var rowID: Int64 = 0
+        var listname: String = ""
         var count = 0
         
         do {
             for row in try db!.prepare(lists) {
                 if count == index {
                     rowID = row[todoList.id]
+                    listname = row[todoList.list]!
                 }
                 count += 1
             }
@@ -228,13 +230,22 @@ class DatabaseHelper {
         }
         
         let list = lists.filter(todoList.id == rowID)
+        let title = todo.filter(todoItem.list == listname)
         
         do {
             let number = try db!.run(list.delete())
-            print("\(number) row deleted")
+            print("\(number) list row deleted")
         } catch {
             print(error)
         }
+        
+        do {
+            let number = try db!.run(title.delete())
+            print("\(number) todo row(s) deleted")
+        } catch {
+            print(error)
+        }
+        
     }
     
     func selectListname(index: Int) throws -> String? {

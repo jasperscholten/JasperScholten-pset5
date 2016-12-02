@@ -104,11 +104,16 @@ class MasterViewController: UITableViewController {
         if editingStyle == .delete {
             TodoManager.sharedInstance.delete(index: indexPath.row, tableName: "lists")
             tableView.deleteRows(at: [indexPath], with: .fade)
+            NotificationCenter.default.post(name: .reload, object: nil)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 
 
+}
+
+extension Notification.Name {
+    static let reload = Notification.Name("reload")
 }
 

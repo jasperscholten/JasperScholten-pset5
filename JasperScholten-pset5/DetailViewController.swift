@@ -19,9 +19,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData(_:)), name: .reload, object: nil)
+        
     }
     
-    
+    func reloadTableData(_ notification: Notification) {
+        todoTableView.reloadData()
+    }
+
     
     
     // MARK: insert object
@@ -46,7 +51,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             self.present(alert, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Select a list", message: "Or create a new one if you don't have any.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Select a list", message: "Or create a new list.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -103,7 +108,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             TodoManager.sharedInstance.delete(index: indexPath.row, tableName: "todo")
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            todoTableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
