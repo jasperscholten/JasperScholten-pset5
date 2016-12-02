@@ -122,7 +122,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            TodoManager.sharedInstance.delete(index: indexPath.row, tableName: "todo")
+            TodoManager.sharedInstance.delete(index: indexPath.row, list: self.detailItem!, tableName: "todo")
             todoTableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

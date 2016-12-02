@@ -187,14 +187,15 @@ class DatabaseHelper {
     }
     
     
-    func deleteTitle(index: Int) throws {
+    func deleteTitle(index: Int, list: String) throws {
         
         var rowID: Int64
         rowID = 0
         var count = 0
         
         do {
-            for row in try db!.prepare(todo) {
+            let selection = todo.filter(todoItem.list == list)
+            for row in try db!.prepare(selection) {
                 if count == index {
                     rowID = row[todoItem.id]
                 }

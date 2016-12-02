@@ -60,10 +60,10 @@ class TodoManager {
         return(title, completed)
     }
     
-    func delete(index: Int, tableName: String) {
+    func delete(index: Int, list: String, tableName: String) {
         do {
             if tableName == "todo" {
-                try db!.deleteTitle(index: index)
+                try db!.deleteTitle(index: index, list: list)
             } else {
                 try db!.deleteList(index: index)
             }

@@ -89,7 +89,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel!.text = TodoManager.sharedInstance.read(index: indexPath.row, list: "unused",tableName: "lists").0
+        cell.textLabel!.text = TodoManager.sharedInstance.read(index: indexPath.row, list: "unused", tableName: "lists").0
         
         return cell
     }
@@ -100,7 +100,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            TodoManager.sharedInstance.delete(index: indexPath.row, tableName: "lists")
+            TodoManager.sharedInstance.delete(index: indexPath.row, list: "unused", tableName: "lists")
             tableView.deleteRows(at: [indexPath], with: .fade)
             NotificationCenter.default.post(name: .reload, object: nil)
         } else if editingStyle == .insert {
