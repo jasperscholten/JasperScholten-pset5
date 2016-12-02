@@ -11,6 +11,7 @@ import UIKit
 class todoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var todoItem: UILabel!
+    @IBOutlet weak var todoSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()

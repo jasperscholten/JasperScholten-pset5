@@ -90,7 +90,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel!.text = TodoManager.sharedInstance.read(index: indexPath.row, list: "unused",tableName: "lists")
+        cell.textLabel!.text = TodoManager.sharedInstance.read(index: indexPath.row, list: "unused",tableName: "lists").0
         
         return cell
     }

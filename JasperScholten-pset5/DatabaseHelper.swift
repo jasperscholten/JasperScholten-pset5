@@ -106,13 +106,14 @@ class DatabaseHelper {
         return result
     }
     
-    func populatecompleted(index: Int, tableName: String) throws -> Bool {
+    func populateCompleted(index: Int, list: String, tableName: String) throws -> Bool {
         
         var result = false
         var count = 0
         
         do {
-            for list in try db!.prepare(todo) {
+            let selection = todo.filter(todoItem.list == list)
+            for list in try db!.prepare(selection) {
                 if count == index {
                     result = list[todoItem.completed]
                 }
@@ -145,7 +146,7 @@ class DatabaseHelper {
         
     }
     
-    func completedSwitch(index: Int) throws {
+    func completedSwitch(index: Int, list: String) throws {
         
         var rowID: Int64
         var rowcompleted: Bool
@@ -154,7 +155,8 @@ class DatabaseHelper {
         var count = 0
         
         do {
-            for row in try db!.prepare(todo.select(todoItem.id, todoItem.completed)) {
+            let selection = todo.filter(todoItem.list == list)
+            for row in try db!.prepare(selection) {
                 if count == index {
                     rowID = row[todoItem.id]
                     rowcompleted = row[todoItem.completed]
@@ -177,7 +179,7 @@ class DatabaseHelper {
         } else {
             do {
                 let number = try db!.run(rowState.update(todoItem.completed <- false))
-                print("\(number) rows completed")
+                print("\(number) rows uncompleted")
             } catch {
                 print(error)
             }

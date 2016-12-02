@@ -58,6 +58,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lk9-Rb-d37">
                                                     <rect key="frame" x="8" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="setSwitch:" destination="JEX-9P-axG" eventType="valueChanged" id="Uwr-s7-bIO"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV5-fp-fZG">
                                                     <rect key="frame" x="65" y="11" width="294" height="21"/>
@@ -78,6 +81,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="todoItem" destination="aV5-fp-fZG" id="H8u-ME-47T"/>
+                                            <outlet property="todoSwitch" destination="Lk9-Rb-d37" id="ODo-a3-dTs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

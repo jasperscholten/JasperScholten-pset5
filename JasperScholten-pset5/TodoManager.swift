@@ -48,17 +48,19 @@ class TodoManager {
     
     // not useful to put countRows here(?)
     // filter eerst op lijstnaam en populate dan pas.
-    func read(index: Int, list: String, tableName: String) -> String? {
+    func read(index: Int, list: String, tableName: String) -> (String?, Bool) {
         
-        var result: String? = ""
+        var title: String? = ""
+        var completed: Bool = false
         
         do {
-            result = try db!.populate(index: index, list: list, tableName: tableName)
+            title = try db!.populate(index: index, list: list, tableName: tableName)
+            completed = try db!.populateCompleted(index: index, list: list, tableName: "todo")
         } catch {
             print(error)
         }
         
-        return(result)
+        return(title, completed)
     }
     
     func delete(index: Int, tableName: String) {
@@ -85,6 +87,15 @@ class TodoManager {
         
         return(listname)
         
+    }
+    
+    func completedSwitch(index: Int, list: String) {
+        do {
+            try db!.completedSwitch(index: index, list: list)
+            print("index \(index), list \(list)")
+        } catch {
+            print(error)
+        }
     }
     
 }

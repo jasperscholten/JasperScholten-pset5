@@ -57,6 +57,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
 
+    @IBAction func setSwitch(_ sender: Any) {
+        
+        // Method to retrieve the indexpath of the cell that the user clicks on. http://stackoverflow.com/questions/39603922/getting-row-of-uitableview-cell-on-button-press-swift-3
+        let switchPos = (sender as AnyObject).convert(CGPoint.zero, to: todoTableView)
+        let indexPath = todoTableView.indexPathForRow(at: switchPos)
+            
+        TodoManager.sharedInstance.completedSwitch(index: (indexPath?.row)!, list: self.detailItem!)
+        
+    }
     
     
     
@@ -98,8 +107,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         let cell = todoTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! todoTableViewCell
         
-        // filter eerst op lijstnaam en populate dan pas --> in TodoManager.
-        cell.todoItem.text = TodoManager.sharedInstance.read(index: indexPath.row, list: self.detailItem!, tableName: "todo")
+        cell.todoItem.text = TodoManager.sharedInstance.read(index: indexPath.row, list: self.detailItem!, tableName: "todo").0
+        let completedState = TodoManager.sharedInstance.read(index: indexPath.row, list: self.detailItem!, tableName: "todo").1
+        
+        cell.todoSwitch.setOn(completedState, animated: true)
         
         return cell
         
