@@ -13,12 +13,13 @@
 		A455D21A1DEC6C16004835E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A455D2181DEC6C16004835E2 /* Main.storyboard */; };
 		A455D21C1DEC6C16004835E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A455D21B1DEC6C16004835E2 /* Assets.xcassets */; };
 		A455D21F1DEC6C16004835E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A455D21D1DEC6C16004835E2 /* LaunchScreen.storyboard */; };
-		A4B573B31DED9A0A00C58D55 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B573A61DED9A0100C58D55 /* SQLite.framework */; };
 		A4B573B61DED9E4300C58D55 /* todoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573B51DED9E4300C58D55 /* todoTableViewCell.swift */; };
 		A4B573B81DEDA5FC00C58D55 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573B71DEDA5FC00C58D55 /* DatabaseHelper.swift */; };
 		A4B573BA1DEDA60A00C58D55 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573B91DEDA60A00C58D55 /* TodoManager.swift */; };
 		A4B573BC1DEDBFC300C58D55 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573BB1DEDBFC300C58D55 /* TodoList.swift */; };
 		A4B573BE1DEDBFD600C58D55 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B573BD1DEDBFD600C58D55 /* TodoItem.swift */; };
+		A4F836491DF192EC0062D272 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B573A61DED9A0100C58D55 /* SQLite.framework */; };
+		A4F8364A1DF192EC0062D272 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4B573A61DED9A0100C58D55 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +72,28 @@
 			remoteGlobalIDString = A121AC451CA35C79005A31D1;
 			remoteInfo = "SQLite watchOS";
 		};
+		A4F8364B1DF192EC0062D272 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4B5739B1DED9A0100C58D55 /* SQLite.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE247AD21C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A4F8364D1DF192EC0062D272 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A4F8364A1DF192EC0062D272 /* SQLite.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A455D20F1DEC6C16004835E2 /* JasperScholten-pset5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JasperScholten-pset5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4B573B31DED9A0A00C58D55 /* SQLite.framework in Frameworks */,
+				A4F836491DF192EC0062D272 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,10 +184,12 @@
 				A455D20B1DEC6C16004835E2 /* Sources */,
 				A455D20C1DEC6C16004835E2 /* Frameworks */,
 				A455D20D1DEC6C16004835E2 /* Resources */,
+				A4F8364D1DF192EC0062D272 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A4F8364C1DF192EC0062D272 /* PBXTargetDependency */,
 			);
 			name = "JasperScholten-pset5";
 			productName = "JasperScholten-pset5";
@@ -296,6 +320,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A4F8364C1DF192EC0062D272 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SQLite iOS";
+			targetProxy = A4F8364B1DF192EC0062D272 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		A455D2181DEC6C16004835E2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -334,6 +366,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -384,6 +417,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -412,6 +446,7 @@
 		A455D2241DEC6C16004835E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3F7K5ABT44;
 				INFOPLIST_FILE = "JasperScholten-pset5/Info.plist";
@@ -425,6 +460,7 @@
 		A455D2251DEC6C16004835E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3F7K5ABT44;
 				INFOPLIST_FILE = "JasperScholten-pset5/Info.plist";

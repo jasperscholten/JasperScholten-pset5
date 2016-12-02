@@ -37,7 +37,6 @@ class TodoManager {
         return(count)
     }
     
-    // Perhaps get list in as string and then convert it to list number?
     func write(title: String, list: String, tableName: String) {
         do {
             try db!.add(title: title, list: list, tableName: tableName)
@@ -46,8 +45,6 @@ class TodoManager {
         }
     }
     
-    // not useful to put countRows here(?)
-    // filter eerst op lijstnaam en populate dan pas.
     func read(index: Int, list: String, tableName: String) -> (String?, Bool) {
         
         var title: String? = ""

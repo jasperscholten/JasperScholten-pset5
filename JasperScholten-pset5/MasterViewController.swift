@@ -16,7 +16,6 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -50,11 +49,12 @@ class MasterViewController: UITableViewController {
             let textField = alert?.textFields![0]
             print("Text field: \(textField?.text)")
             
-            // check of lijstnaam al bestaat, anders alert 'list does already exist'
-            
-            TodoManager.sharedInstance.write(title: "unused", list: (textField?.text!)!, tableName: "lists")
-            
-            self.tableView.reloadData()
+            if textField?.text! == "" {
+                print("Empty String")
+            } else {
+                TodoManager.sharedInstance.write(title: "unused", list: (textField?.text!)!, tableName: "lists")
+                self.tableView.reloadData()
+            }
         
         }))
         
@@ -67,12 +67,12 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 
-                // geeft lijstnaam mee, zodat die lijst geladen kan worden
                 let listname = TodoManager.sharedInstance.selectListname(index: indexPath.row)
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = listname
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         }
     }
@@ -96,7 +96,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
 

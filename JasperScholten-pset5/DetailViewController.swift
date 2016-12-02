@@ -33,7 +33,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func insertNewObject(_ sender: Any) {
         
-        // Check if a list has been selected.
         if(self.detailItem != nil) {
             // http://stackoverflow.com/questions/26567413/get-input-value-from-textfield-in-ios-alert-in-swift
             let alert = UIAlertController(title: "Add a new todo item", message: "Enter what you want to do", preferredStyle: .alert)
@@ -45,8 +44,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert?.textFields![0]
                 
-                TodoManager.sharedInstance.write(title: (textField?.text!)!, list: self.detailItem!, tableName: "todo")
-                self.todoTableView.reloadData()
+                if textField?.text! == "" {
+                    print("Empty String")
+                } else {
+                    TodoManager.sharedInstance.write(title: (textField?.text!)!, list: self.detailItem!, tableName: "todo")
+                    self.todoTableView.reloadData()
+                }
+                
             }))
             
             self.present(alert, animated: true, completion: nil)
@@ -70,13 +74,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    // Use to choose which list will show.
     func configureView() {
-        // Update the user interface for the detail item.
         if let detail = self.detailItem {
             print(detail)
         }
@@ -84,7 +87,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     var detailItem: String? {
         didSet {
-            // Update the view.
             self.configureView()
         }
     }
