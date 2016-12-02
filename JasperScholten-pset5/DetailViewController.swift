@@ -21,6 +21,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData(_:)), name: .reload, object: nil)
         
+        self.title = detailItem
+        
     }
     
     func reloadTableData(_ notification: Notification) {
@@ -126,6 +128,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    
+    
     
     // MARK: - State Restoration
     
